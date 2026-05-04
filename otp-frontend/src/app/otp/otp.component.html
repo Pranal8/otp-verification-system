@@ -1,0 +1,54 @@
+<div class="otp-wrapper">
+  <div class="otp-card">
+
+    <h2 class="title">OTP Verification</h2>
+    <p class="subtitle">Secure login using mobile number</p>
+
+    <!-- Phone Input -->
+    <label>Phone Number</label>
+    <input
+      [(ngModel)]="phone"
+      placeholder="Enter phone number"
+      class="input"
+    />
+
+    <button class="btn primary" (click)="sendOTP()">
+      Send OTP
+    </button>
+
+    <!-- ⏱ TIMER -->
+    <p class="hint" *ngIf="timer > 0">
+      OTP expires in: {{ timer }} seconds
+    </p>
+
+    <!-- RESEND -->
+    <button
+      class="btn primary"
+      (click)="sendOTP()"
+      [disabled]="!canResend"
+    >
+      Resend OTP
+    </button>
+
+    <p class="hint" *ngIf="!canResend && timer > 0">
+      Please wait before resending OTP
+    </p>
+
+    <!-- OTP Input -->
+    <label>OTP</label>
+    <input
+      [(ngModel)]="otp"
+      placeholder="Enter OTP"
+      class="input"
+      maxlength="6"
+    />
+
+    <button class="btn success" (click)="verifyOTP()">
+      Verify OTP
+    </button>
+
+    <!-- Message -->
+    <p class="message">{{ message }}</p>
+
+  </div>
+</div>
