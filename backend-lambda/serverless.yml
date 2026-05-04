@@ -1,0 +1,28 @@
+service: otp-auth-lambda
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+
+  environment:
+    MONGO_URI: your_mongo_uri
+    JWT_SECRET: your_jwt_secret
+    TWILIO_SID: your_twilio_sid
+    TWILIO_AUTH: your_twilio_auth
+    TWILIO_PHONE: your_twilio_phone
+
+functions:
+  sendOtp:
+    handler: handler.sendOtp
+    events:
+      - http:
+          path: send-otp
+          method: post
+
+  verifyOtp:
+    handler: handler.verifyOtp
+    events:
+      - http:
+          path: verify-otp
+          method: post

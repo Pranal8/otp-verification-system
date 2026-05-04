@@ -55,6 +55,8 @@ export class OtpComponent {
 
   // 🔐 VERIFY OTP
   verifyOTP() {
+//     https://xxxxx.execute-api.ap-south-1.amazonaws.com/dev/send-otp
+// https://xxxxx.execute-api.ap-south-1.amazonaws.com/dev/verify-otp
     this.http.post('http://localhost:5000/api/auth/verify-otp', {
       phone: this.phone,
       otp: this.otp
